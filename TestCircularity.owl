@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#"
+     xml:base="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Cardiman -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Cardiman">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Dairy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Dairy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Drain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Drain">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Fruit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Fruit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#PestB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#PestB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pest"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Root -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Root">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Tuber -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Tuber">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Vigetable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#Vigetable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#crop"/>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#disease -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#disease"/>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#disease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#disease"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseD -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseD">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseB"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseE -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseE">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#diseaseD"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerB"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#fertilizerA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pest -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pest"/>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pest"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestE -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestE">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestC"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestF -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestF">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestE"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestG -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestG">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/hp/ontologies/2022/2/untitled-ontology-148#pestF"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

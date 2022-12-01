@@ -1,0 +1,945 @@
+@prefix : <http://www.crop-doa.com/assignment#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.crop-doa.com/assignment> .
+
+<http://www.crop-doa.com/assignment> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.crop-doa.com/assignment#hasAffected
+:hasAffected rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :isAffectedBy ;
+             rdfs:domain :Disease ;
+             rdfs:range :Crop .
+
+
+###  http://www.crop-doa.com/assignment#hasControl
+:hasControl rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :isControlledBy ;
+            rdfs:domain :ControlMethod ;
+            rdfs:range :Disease .
+
+
+###  http://www.crop-doa.com/assignment#hasCultivatedSeason
+:hasCultivatedSeason rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :Crop ;
+                     rdfs:range :Season .
+
+
+###  http://www.crop-doa.com/assignment#hasEnvironmentalFactors
+:hasEnvironmentalFactors rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         owl:inverseOf :isEnvironmentalFactorOf ;
+                         rdfs:domain :Crop ;
+                         rdfs:range :EnvironmentalFactors .
+
+
+###  http://www.crop-doa.com/assignment#hasSymptom
+:hasSymptom rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :isSymptomOf ;
+            rdfs:domain :Disease ;
+            rdfs:range :Symptom .
+
+
+###  http://www.crop-doa.com/assignment#hasVariety
+:hasVariety rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf :isVarietyOf ;
+            rdfs:domain :Crop ;
+            rdfs:range :Variety .
+
+
+###  http://www.crop-doa.com/assignment#isAffectedBy
+:isAffectedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Crop ;
+              rdfs:range :Disease .
+
+
+###  http://www.crop-doa.com/assignment#isControlledBy
+:isControlledBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Disease ;
+                rdfs:range :ControlMethod .
+
+
+###  http://www.crop-doa.com/assignment#isCultivatedIn
+:isCultivatedIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Crop ;
+                rdfs:range :Location .
+
+
+###  http://www.crop-doa.com/assignment#isEnvironmentalFactorOf
+:isEnvironmentalFactorOf rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain :EnvironmentalFactors ;
+                         rdfs:range :Crop .
+
+
+###  http://www.crop-doa.com/assignment#isSymptomOf
+:isSymptomOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Symptom ;
+             rdfs:range :Disease .
+
+
+###  http://www.crop-doa.com/assignment#isVarietyOf
+:isVarietyOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Variety ;
+             rdfs:range :Crop .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.crop-doa.com/assignment#hasColor
+:hasColor rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Variety ;
+          rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasControlMethod
+:hasControlMethod rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ControlMethod ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasCropName
+:hasCropName rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Crop ;
+             rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasDayTimeTemp
+:hasDayTimeTemp rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Climate ;
+                rdfs:range xsd:double .
+
+
+###  http://www.crop-doa.com/assignment#hasDiseaseName
+:hasDiseaseName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Disease ;
+                rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasLocationName
+:hasLocationName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Location ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasNightTimeTemp
+:hasNightTimeTemp rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Climate ;
+                  rdfs:range xsd:double .
+
+
+###  http://www.crop-doa.com/assignment#hasPHValue
+:hasPHValue rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Soil ;
+            rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasQuantity
+:hasQuantity rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :ChemicalMethod ;
+             rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasScientificName
+:hasScientificName rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Crop ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasSeasonName
+:hasSeasonName rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Season ;
+               rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasShape
+:hasShape rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Variety ;
+          rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasSymptomDesc
+:hasSymptomDesc rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Symptom ;
+                rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#hasVarietyName
+:hasVarietyName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Variety ;
+                rdfs:range xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#imgSource
+:imgSource rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Crop ;
+           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.crop-doa.com/assignment#Bacteria
+:Bacteria rdf:type owl:Class ;
+          rdfs:subClassOf :Disease .
+
+
+###  http://www.crop-doa.com/assignment#ChemicalMethod
+:ChemicalMethod rdf:type owl:Class ;
+                rdfs:subClassOf :ControlMethod ;
+                owl:disjointWith :NonChemicalMethod .
+
+
+###  http://www.crop-doa.com/assignment#Climate
+:Climate rdf:type owl:Class ;
+         rdfs:subClassOf :EnvironmentalFactors .
+
+
+###  http://www.crop-doa.com/assignment#Condiments
+:Condiments rdf:type owl:Class ;
+            rdfs:subClassOf :Crop ;
+            rdfs:label "Condiments"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#ControlMethod
+:ControlMethod rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasControl ;
+                                     owl:someValuesFrom :Disease
+                                   ] .
+
+
+###  http://www.crop-doa.com/assignment#Crop
+:Crop rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasCultivatedSeason ;
+                            owl:someValuesFrom :Season
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasEnvironmentalFactors ;
+                            owl:someValuesFrom :EnvironmentalFactors
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasVariety ;
+                            owl:someValuesFrom :Variety
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isAffectedBy ;
+                            owl:someValuesFrom :Disease
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isCultivatedIn ;
+                            owl:someValuesFrom :Location
+                          ] .
+
+
+###  http://www.crop-doa.com/assignment#Disease
+:Disease rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasAffected ;
+                               owl:someValuesFrom :Crop
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSymptom ;
+                               owl:someValuesFrom :Symptom
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isControlledBy ;
+                               owl:someValuesFrom :ControlMethod
+                             ] .
+
+
+###  http://www.crop-doa.com/assignment#EnvironmentalFactors
+:EnvironmentalFactors rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty :isEnvironmentalFactorOf ;
+                                            owl:someValuesFrom :Crop
+                                          ] .
+
+
+###  http://www.crop-doa.com/assignment#FruitCrops
+:FruitCrops rdf:type owl:Class ;
+            rdfs:subClassOf :Crop ;
+            rdfs:label "Fruit Crops"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Fungi
+:Fungi rdf:type owl:Class ;
+       rdfs:subClassOf :Disease .
+
+
+###  http://www.crop-doa.com/assignment#Location
+:Location rdf:type owl:Class .
+
+
+###  http://www.crop-doa.com/assignment#Nematode
+:Nematode rdf:type owl:Class ;
+          rdfs:subClassOf :Disease .
+
+
+###  http://www.crop-doa.com/assignment#NonChemicalMethod
+:NonChemicalMethod rdf:type owl:Class ;
+                   rdfs:subClassOf :ControlMethod .
+
+
+###  http://www.crop-doa.com/assignment#OilCrops
+:OilCrops rdf:type owl:Class ;
+          rdfs:subClassOf :Crop ;
+          rdfs:label "Oil Crops"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#RootCrops
+:RootCrops rdf:type owl:Class ;
+           rdfs:subClassOf :Crop ;
+           rdfs:label "Root Crops"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Season
+:Season rdf:type owl:Class .
+
+
+###  http://www.crop-doa.com/assignment#Soil
+:Soil rdf:type owl:Class ;
+      rdfs:subClassOf :EnvironmentalFactors .
+
+
+###  http://www.crop-doa.com/assignment#Symptom
+:Symptom rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :isSymptomOf ;
+                               owl:someValuesFrom :Disease
+                             ] .
+
+
+###  http://www.crop-doa.com/assignment#Variety
+:Variety rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :isVarietyOf ;
+                               owl:someValuesFrom :Crop
+                             ] .
+
+
+###  http://www.crop-doa.com/assignment#Vegetable
+:Vegetable rdf:type owl:Class ;
+           rdfs:subClassOf :Crop ;
+           rdfs:label "Vegetable"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Viruse
+:Viruse rdf:type owl:Class ;
+        rdfs:subClassOf :Disease .
+
+
+###  http://www.crop-doa.com/assignment#Water
+:Water rdf:type owl:Class ;
+       rdfs:subClassOf :EnvironmentalFactors .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.crop-doa.com/assignment#ANK_Ruhunu
+:ANK_Ruhunu rdf:type owl:NamedIndividual ,
+                     :Variety ;
+            :isVarietyOf :Pumpkin ;
+            :hasColor "Yellow-Orange"^^xsd:string ;
+            :hasShape "No Specific"^^xsd:string ;
+            :hasVarietyName "ANK Ruhunu"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Amanda
+:Amanda rdf:type owl:NamedIndividual ,
+                 :Variety ;
+        :isVarietyOf :Brinjal ;
+        :hasColor "Purple mixed Green"^^xsd:string ;
+        :hasShape "Cylindrical"^^xsd:string ;
+        :hasVarietyName "Amanda"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Anthracnose
+:Anthracnose rdf:type owl:NamedIndividual ,
+                      :Fungi ;
+             :hasAffected :Mango ;
+             :hasSymptom :Anthracnose_Symptom_1 ;
+             :hasDiseaseName "Anthracnose"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Anthracnose_Control_M_1
+:Anthracnose_Control_M_1 rdf:type owl:NamedIndividual ,
+                                  :ChemicalMethod ;
+                         :hasControl :Anthracnose ;
+                         :hasControlMethod "Apply mangozeb 80% WP fungicide immediately after flowering and after flowering of diseased trees"^^xsd:string ;
+                         :hasQuantity "20 g per 10 liters of water"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Anthracnose_Control_M_2
+:Anthracnose_Control_M_2 rdf:type owl:NamedIndividual ,
+                                  :NonChemicalMethod ;
+                         :hasControl :Anthracnose ;
+                         :hasControlMethod "Make the sun shine well into the tree"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Anthracnose_Symptom_1
+:Anthracnose_Symptom_1 rdf:type owl:NamedIndividual ,
+                                :Symptom ;
+                       :hasSymptomDesc "The leaves have small dark brown or black spots"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Avoid_continuous_cultivation_of_beans_in_the_same_field
+:Avoid_continuous_cultivation_of_beans_in_the_same_field rdf:type owl:NamedIndividual ,
+                                                                  :NonChemicalMethod ;
+                                                         :hasControl :Pythium_rot ;
+                                                         :hasControlMethod "Avoid continuous cultivation of beans in the same field"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Avoid_excessive_use_of_nitrogen
+:Avoid_excessive_use_of_nitrogen rdf:type owl:NamedIndividual ,
+                                          :NonChemicalMethod ;
+                                 :hasControl :Pythium_rot ;
+                                 :hasControlMethod "Avoid excessive use of nitrogen"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Blight_Symptom_1
+:Bacterial_Blight_Symptom_1 rdf:type owl:NamedIndividual ,
+                                     :Symptom ;
+                            :hasSymptomDesc "Leaves develop water-soaked spots, turn brown, and fall"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Blight_Symptom_2
+:Bacterial_Blight_Symptom_2 rdf:type owl:NamedIndividual ,
+                                     :Symptom ;
+                            :hasSymptomDesc "Water-soaked spots appear on pods"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Wilt_Control_M_1
+:Bacterial_Wilt_Control_M_1 rdf:type owl:NamedIndividual ,
+                                     :NonChemicalMethod ;
+                            :hasControl :Bacterial_wilt ;
+                            :hasControlMethod "Crop rotation with non solanacea crops"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Wilt_Control_M_2
+:Bacterial_Wilt_Control_M_2 rdf:type owl:NamedIndividual ,
+                                     :NonChemicalMethod ;
+                            :hasControl :Bacterial_wilt ;
+                            :hasControlMethod "Use wilt resistant verities"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Wilt_Control_M_3
+:Bacterial_Wilt_Control_M_3 rdf:type owl:NamedIndividual ,
+                                     :ChemicalMethod ;
+                            :hasControl :Bacterial_wilt ;
+                            :hasControlMethod "Soil sterilization with fungicides such as methyl bromide can be effective but is very costly"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Wilt_Symptom_1
+:Bacterial_Wilt_Symptom_1 rdf:type owl:NamedIndividual ,
+                                   :Symptom ;
+                          :hasSymptomDesc "Sudden and permanent wilting similar to water stress"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_Wilt_Symptom_2
+:Bacterial_Wilt_Symptom_2 rdf:type owl:NamedIndividual ,
+                                   :Symptom ;
+                          :hasSymptomDesc "Discoloration of vascular tissue"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_blight
+:Bacterial_blight rdf:type owl:NamedIndividual ,
+                           :Bacteria ;
+                  :hasAffected :Beans ;
+                  :hasSymptom :Bacterial_Blight_Symptom_1 ,
+                              :Bacterial_Blight_Symptom_2 ;
+                  :hasDiseaseName "Bacterial Blight"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_blight_Control_M_1
+:Bacterial_blight_Control_M_1 rdf:type owl:NamedIndividual ,
+                                       :NonChemicalMethod ;
+                              :hasControl :Bacterial_blight ;
+                              :hasControlMethod "Follow a crop, rotation"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_blight_Control_M_2
+:Bacterial_blight_Control_M_2 rdf:type owl:NamedIndividual ,
+                                       :NonChemicalMethod ;
+                              :hasControl :Bacterial_blight ;
+                              :hasControlMethod "Use resistant varieties"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_blight_Control_M_3
+:Bacterial_blight_Control_M_3 rdf:type owl:NamedIndividual ,
+                                       :NonChemicalMethod ;
+                              :hasControl :Bacterial_blight ;
+                              :hasControlMethod "Remove all diseased plants at the earliest symptoms"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bacterial_wilt
+:Bacterial_wilt rdf:type owl:NamedIndividual ,
+                         :Bacteria ;
+                :hasAffected :Brinjal ,
+                             :Tomato ;
+                :hasSymptom :Bacterial_Wilt_Symptom_1 ,
+                            :Bacterial_Wilt_Symptom_2 ;
+                :hasDiseaseName "Bacterial Wilt"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Badulla
+:Badulla rdf:type owl:NamedIndividual ,
+                  :Location ;
+         :hasLocationName "Badulla"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bean_Mosaic_Virus_Symptom_1
+:Bean_Mosaic_Virus_Symptom_1 rdf:type owl:NamedIndividual ,
+                                      :Symptom ;
+                             :hasSymptomDesc "Yellow and dark green mottling on leaves"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bean_Mosaic_Virus_Symptom_2
+:Bean_Mosaic_Virus_Symptom_2 rdf:type owl:NamedIndividual ,
+                                      :Symptom ;
+                             :hasSymptomDesc "Plant stunting"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Bean_mosaic_virus
+:Bean_mosaic_virus rdf:type owl:NamedIndividual ,
+                            :Viruse ;
+                   :hasAffected :Beans ;
+                   :hasSymptom :Bean_Mosaic_Virus_Symptom_1 ,
+                               :Bean_Mosaic_Virus_Symptom_2 ;
+                   :hasDiseaseName "Bean Mosaic Virus"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Beans
+:Beans rdf:type owl:NamedIndividual ,
+                :Vegetable ;
+       :hasCultivatedSeason :Maha ,
+                            :Yala ;
+       :hasCropName "Beans"^^xsd:string ;
+       :hasScientificName "Phaseolus vulgaris L."^^xsd:string ;
+       :imgSource "beans"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Brinjal
+:Brinjal rdf:type owl:NamedIndividual ,
+                  :Vegetable ;
+         :hasCultivatedSeason :Maha ,
+                              :Yala ;
+         :hasCropName "Brinjal"^^xsd:string ;
+         :hasScientificName "Solanum melongina L"^^xsd:string ;
+         :imgSource "brinjal"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Browning_of_basal_stem_and_roots
+:Browning_of_basal_stem_and_roots rdf:type owl:NamedIndividual ,
+                                           :Symptom ;
+                                  :hasSymptomDesc "Browning of basal stem and roots"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Cape_Market
+:Cape_Market rdf:type owl:NamedIndividual ,
+                      :Variety ;
+             :isVarietyOf :Carrot ;
+             :hasColor "Dark Orange"^^xsd:string ;
+             :hasShape "Conical"^^xsd:string ;
+             :hasVarietyName "Cape Market"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Carrot
+:Carrot rdf:type owl:NamedIndividual ,
+                 :Vegetable ;
+        :hasCultivatedSeason :Maha ,
+                             :Yala ;
+        :hasCropName "Carrot"^^xsd:string ;
+        :hasScientificName "Daucus carota"^^xsd:string ;
+        :imgSource "carrot"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Chilli
+:Chilli rdf:type owl:NamedIndividual ,
+                 :Condiments ;
+        :isCultivatedIn :Moneragala ;
+        :hasCropName "Chilli"^^xsd:string ;
+        :hasScientificName "Capsicum Frutescens"^^xsd:string ;
+        :imgSource "chilli"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Disayari
+:Disayari rdf:type owl:NamedIndividual ,
+                   :Variety ;
+          :isVarietyOf :Potato ;
+          :hasColor "Red"^^xsd:string ;
+          :hasShape "Circle to Oval"^^xsd:string ;
+          :hasVarietyName "Disayari"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Facilitate_good_drainage
+:Facilitate_good_drainage rdf:type owl:NamedIndividual ,
+                                   :NonChemicalMethod ;
+                          :hasControl :Pythium_rot ;
+                          :hasControlMethod "Facilitate good drainage"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Groundnut
+:Groundnut rdf:type owl:NamedIndividual ,
+                    :OilCrops ;
+           :isCultivatedIn :Badulla ,
+                           :Moneragala ;
+           :hasCropName "Groundnut"^^xsd:string ;
+           :hasScientificName "Arachis Hypogaea"^^xsd:string ;
+           :imgSource "groundnut"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Jaffna
+:Jaffna rdf:type owl:NamedIndividual ,
+                 :Location ;
+        :hasLocationName "Jaffna"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Kandy
+:Kandy rdf:type owl:NamedIndividual ,
+                :Location ;
+       :hasLocationName "Kandy"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Kegalle
+:Kegalle rdf:type owl:NamedIndividual ,
+                  :Location ;
+         :hasLocationName "Kegalle"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Kentucky_Wonder_Green
+:Kentucky_Wonder_Green rdf:type owl:NamedIndividual ,
+                                :Variety ;
+                       :isVarietyOf :Beans ;
+                       :hasColor "Green"^^xsd:string ;
+                       :hasShape "Oval Cordate"^^xsd:string ;
+                       :hasVarietyName "Kentucky Wonder Green"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Kentucky_Wonder_Wax
+:Kentucky_Wonder_Wax rdf:type owl:NamedIndividual ,
+                              :Variety ;
+                     :isVarietyOf :Beans ;
+                     :hasColor "Light Yellow"^^xsd:string ;
+                     :hasShape "Oval Cordate"^^xsd:string ;
+                     :hasVarietyName "Kentucky Wonder Wax"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Leaf_Spot_Control_M_1
+:Leaf_Spot_Control_M_1 rdf:type owl:NamedIndividual ,
+                                :ChemicalMethod ;
+                       :hasControl :Leaf_spot ;
+                       :hasControlMethod "Spray foliage with a recommended fungicide"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Leaf_Spot_Control_M_2
+:Leaf_Spot_Control_M_2 rdf:type owl:NamedIndividual ,
+                                :NonChemicalMethod ;
+                       :hasControl :Leaf_spot ;
+                       :hasControlMethod "Destroy infected plant debris"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Leaf_Spot_Symptom_1
+:Leaf_Spot_Symptom_1 rdf:type owl:NamedIndividual ,
+                              :Symptom ;
+                     :hasSymptomDesc "Lesions with circular white centers on young leaves"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Leaf_spot
+:Leaf_spot rdf:type owl:NamedIndividual ,
+                    :Fungi ;
+           :hasAffected :Carrot ;
+           :hasSymptom :Leaf_Spot_Symptom_1 ;
+           :hasDiseaseName "Leaf Spot"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#MI_-_2
+:MI_-_2 rdf:type owl:NamedIndividual ,
+                 :Variety ;
+        :isVarietyOf :Chilli ;
+        :hasColor "Green"^^xsd:string ;
+        :hasShape "Acute Tapered"^^xsd:string ;
+        :hasVarietyName "MI - 2"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Maha
+:Maha rdf:type owl:NamedIndividual ,
+               :Season ;
+      :hasSeasonName "Maha"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Mango
+:Mango rdf:type owl:NamedIndividual ,
+                :FruitCrops ;
+       :hasCropName "Mango"^^xsd:string ;
+       :hasScientificName "Mangifera Indica"^^xsd:string ;
+       :imgSource "mango"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Moneragala
+:Moneragala rdf:type owl:NamedIndividual ,
+                     :Location ;
+            :hasLocationName "Moneragala"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Nuwaraeliya
+:Nuwaraeliya rdf:type owl:NamedIndividual ,
+                      :Location ;
+             :hasLocationName "Nuwaraeliya"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Potato
+:Potato rdf:type owl:NamedIndividual ,
+                 :RootCrops ;
+        :hasCultivatedSeason :Maha ,
+                             :Yala ;
+        :isCultivatedIn :Badulla ,
+                        :Jaffna ,
+                        :Nuwaraeliya ;
+        :hasCropName "Potato"^^xsd:string ;
+        :hasScientificName "SolanamTuberosum"^^xsd:string ;
+        :imgSource "potato"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Powdery_Mildew
+:Powdery_Mildew rdf:type owl:NamedIndividual ,
+                         :Fungi ;
+                :hasAffected :Pumpkin ;
+                :hasSymptom :Powdery_Mildew_Symptom_1 ,
+                            :Powdery_Mildew_Symptom_2 ;
+                :hasDiseaseName "Powdery Mildew"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Powdery_Mildew_Control_M_1
+:Powdery_Mildew_Control_M_1 rdf:type owl:NamedIndividual ,
+                                     :NonChemicalMethod ;
+                            :hasControl :Powdery_Mildew ;
+                            :hasControlMethod "Discard host plants and weeds belongs to family cucurbitaceae"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Powdery_Mildew_Symptom_1
+:Powdery_Mildew_Symptom_1 rdf:type owl:NamedIndividual ,
+                                   :Symptom ;
+                          :hasSymptomDesc "Leaves become yellow in colour"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Powdery_Mildew_Symptom_2
+:Powdery_Mildew_Symptom_2 rdf:type owl:NamedIndividual ,
+                                   :Symptom ;
+                          :hasSymptomDesc "White colour spores are visible on both sides of the leaves"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Pumpkin
+:Pumpkin rdf:type owl:NamedIndividual ,
+                  :Vegetable ;
+         :hasCultivatedSeason :Maha ,
+                              :Yala ;
+         :hasCropName "Pumpkin"^^xsd:string ;
+         :hasScientificName "Cucurbita maxima"^^xsd:string ;
+         :imgSource "pumpkin"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Pythium_rot
+:Pythium_rot rdf:type owl:NamedIndividual ,
+                      :Fungi ;
+             :hasAffected :Beans ;
+             :hasSymptom :Browning_of_basal_stem_and_roots ,
+                         :Scorching_of_leaves ;
+             :hasDiseaseName "Pythium Rot"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Roma
+:Roma rdf:type owl:NamedIndividual ,
+               :Variety ;
+      :isVarietyOf :Tomato ;
+      :hasColor "Orange Red"^^xsd:string ;
+      :hasShape "Oval"^^xsd:string ;
+      :hasVarietyName "Roma"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Scorching_of_leaves
+:Scorching_of_leaves rdf:type owl:NamedIndividual ,
+                              :Symptom ;
+                     :hasSymptomDesc "Scorching of leaves"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Stem_Rot_Control_M_1
+:Stem_Rot_Control_M_1 rdf:type owl:NamedIndividual ,
+                               :NonChemicalMethod ;
+                      :hasControl :Stem_rot ;
+                      :hasControlMethod "Remove affected plants and destroy"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Stem_Rot_Symptom_1
+:Stem_Rot_Symptom_1 rdf:type owl:NamedIndividual ,
+                             :Symptom ;
+                    :hasSymptomDesc "Leaves turn brown and wilt"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Stem_rot
+:Stem_rot rdf:type owl:NamedIndividual ,
+                   :Fungi ;
+          :hasAffected :Groundnut ;
+          :hasSymptom :Stem_Rot_Symptom_1 ;
+          :hasDiseaseName "Stem Rot"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#T_245
+:T_245 rdf:type owl:NamedIndividual ,
+                :Variety ;
+       :isVarietyOf :Tomato ;
+       :hasColor "Orange Red"^^xsd:string ;
+       :hasShape "Round"^^xsd:string ;
+       :hasVarietyName "T 245"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Tissa
+:Tissa rdf:type owl:NamedIndividual ,
+                :Variety ;
+       :isVarietyOf :Groundnut ;
+       :hasColor "Brownish Green"^^xsd:string ;
+       :hasShape "Round Shape"^^xsd:string ;
+       :hasVarietyName "Tissa"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Tomato
+:Tomato rdf:type owl:NamedIndividual ,
+                 :Vegetable ;
+        :hasCultivatedSeason :Maha ,
+                             :Yala ;
+        :isCultivatedIn :Badulla ,
+                        :Kandy ,
+                        :Nuwaraeliya ;
+        :hasCropName "Tomato"^^xsd:string ;
+        :hasScientificName "Lycopersicon esculentum Mill"^^xsd:string ;
+        :imgSource "tomato"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Top_Crop
+:Top_Crop rdf:type owl:NamedIndividual ,
+                   :Variety ;
+          :isVarietyOf :Beans ;
+          :hasColor "Light Green"^^xsd:string ;
+          :hasShape "Flattened to Round"^^xsd:string ;
+          :hasVarietyName "Top Crop"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Top_Weight
+:Top_Weight rdf:type owl:NamedIndividual ,
+                     :Variety ;
+            :isVarietyOf :Carrot ;
+            :hasColor "Orange"^^xsd:string ;
+            :hasShape "Cylindrical"^^xsd:string ;
+            :hasVarietyName "Top Weight"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Trincomalee
+:Trincomalee rdf:type owl:NamedIndividual ,
+                      :Location ;
+             :hasLocationName "Trincomalee"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Udawalawe
+:Udawalawe rdf:type owl:NamedIndividual ,
+                    :Location ;
+           :hasLocationName "Udawalawe"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Use_recommended_fungicides_for_seed_and_soil_treatment
+:Use_recommended_fungicides_for_seed_and_soil_treatment rdf:type owl:NamedIndividual ,
+                                                                 :ChemicalMethod ;
+                                                        :hasControl :Pythium_rot ;
+                                                        :hasControlMethod "Use recommended fungicides for seed and soil treatment"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Wade
+:Wade rdf:type owl:NamedIndividual ,
+               :Variety ;
+      :isVarietyOf :Beans ;
+      :hasColor "Dark Green"^^xsd:string ;
+      :hasShape "Round"^^xsd:string ;
+      :hasVarietyName "Wade"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Willard
+:Willard rdf:type owl:NamedIndividual ,
+                  :Variety ;
+         :isVarietyOf :Mango ;
+         :hasColor "Red"^^xsd:string ;
+         :hasShape "Circle"^^xsd:string ;
+         :hasVarietyName "Willard"^^xsd:string .
+
+
+###  http://www.crop-doa.com/assignment#Yala
+:Yala rdf:type owl:NamedIndividual ,
+               :Season ;
+      :hasSeasonName "Yala"^^xsd:string .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Bacteria
+                :Fungi
+                :Nematode
+                :Viruse
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Climate
+                :Soil
+                :Water
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ControlMethod
+                :Crop
+                :Disease
+                :EnvironmentalFactors
+                :Location
+                :Season
+                :Symptom
+                :Variety
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
