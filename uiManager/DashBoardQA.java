@@ -5,11 +5,16 @@
  */
 package com.ontoQual.uiManager;
 
+import com.ontoQual.Controllers.ExcelReportGenerator;
 import com.ontoQual.Controllers.Metric;
 import com.ontoQual.Controllers.MetricConnectivityController;
 import com.ontoQual.Controllers.MetricController;
-import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -949,6 +954,12 @@ public class DashBoardQA extends javax.swing.JFrame {
         MAX_DEPTH.setForeground(new java.awt.Color(255, 255, 255));
 
         ROOT_CLASS.setText("Crop");
+        ROOT_CLASS.setToolTipText("");
+        ROOT_CLASS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ROOT_CLASSActionPerformed(evt);
+            }
+        });
 
         CLASS_CON.setFont(new java.awt.Font("Cambria Math", 0, 11)); // NOI18N
         CLASS_CON.setForeground(new java.awt.Color(255, 255, 255));
@@ -1702,17 +1713,84 @@ public class DashBoardQA extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String url = "https://conferenceuwu.000webhostapp.com/";
+        try {
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (IOException ex) {
+            Logger.getLogger(DashBoardQA.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+    private void reset() {
+                ontologyPathQP.setText("");
+                CLASSCOUNT.setText("");
+                OPCOUNT.setText ("");
+                DPCOUNT.setText("");
+                INDIVIDUALCOUNT.setText("");
+                LOGICALAXIOMCOUNT.setText("");
+                DeclaredAxiomCount.setText("");
+                CHAINPROPERTY_COUNT.setText("");
+                SUBCLASS_AXIOMS.setText("");
+                //Consistency Check
+                EQUIVALENT_CLASS_AXIOMS.setText("");
+                DISJOINT_CLASS_AXIOMS.setText("");
+                SUB_OBJECTPROPERTY_AXIOMS.setText("");
+                EQUIVALENT_OBJECT_PROPERTY_AXIOMS.setText("");
+                DISJOINT_OBJPROPERTY_AXIOMS.setText("");
+                //Comprehensability
+                ANNOTATIONPROPCOUNT.setText("");
+                ANNOTATIONPROP_ASSERT.setText("");
+ 
+                ISOLATEDINDIVIDUAL.setText ("");
+                INSTANCE_USAGE.setText("");
 
+                RELATION_RICHNESS.setText("");
+                CLASS_RICHNESS.setText("");
+                OP_USAGE.setText("");
+                ISOLATEDOP.setText("");
+                DP_USAGE.setText("");
+                ISOLATEDDP.setText("");
+                ISOLATED_CLASS.setText("");
+                
+
+                CONSISTENCY_STATUS.setText("");
+//              
+               
+                FUNTIONAL_OP.setText("");
+                INVERSE_FUNTIONAL_OP.setText("");
+                TRANSITIVE_OP.setText("");
+                SYMMETRIC_OP.setText("");
+                ASYMMETRIC_OP.setText("");
+                REFLEXIVE_OP.setText("");
+                IREFLEXIVE_OP.setText("");
+                FUNCTIONAL_DP.setText("");
+
+                //Graph Metrics - Modularity
+               
+                CIRCULARITY.setText("");
+                MAX_DEPTH.setText("");
+                MAX_BREADTH.setText(""); // check the bug
+
+//                // Schema Connenctivey - Modularity //
+               
+                CLASS_CON.setText ("Connected classes: ");
+                CLASS_DISCON.setText ("Disconnented classes: ");
+
+    }
     private void qualityProfilerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qualityProfilerbtnActionPerformed
         // TODO add your handling code here:
+        //set All Field empty
+         reset();
+        
         String type = getFileChooser();
         boolean selectConsistencyStatus=false;
 
         if (type != null) {
             LOADINGLabel.setVisible(true);
-            if (isOntologyPath(type )) {
+            ontologyPathQP.setText(type);
+            setRoot();
+            if (isOntologyPath(type) && setRoot()) {
                 ontologyPathQP.setText(type);
+                
                 MetricController mc = new MetricController(type);
                 Metric metric = mc.getGeneralQualityMetric();
                 CLASSCOUNT.setText(Integer.toString(metric.getNumberOfClasses()));
@@ -1729,9 +1807,23 @@ public class DashBoardQA extends javax.swing.JFrame {
                 SUB_OBJECTPROPERTY_AXIOMS.setText(Integer.toString(metric.getNumberOfSubPropertyAxiom()));
                 EQUIVALENT_OBJECT_PROPERTY_AXIOMS.setText(Integer.toString(metric.getNumberOfEquivalentOBJPropertyAxiom()));
                 DISJOINT_OBJPROPERTY_AXIOMS.setText(Integer.toString(metric.getNumberOfDisjointOBJPropertyAxiom()));
+
                 //Comprehensability
                 ANNOTATIONPROPCOUNT.setText(Integer.toString(metric.getNumberOfAnnotation()));
                 ANNOTATIONPROP_ASSERT.setText(Integer.toString(metric.getNumberOfAnnotationAssertion()));
+                //Consistency Check - 2
+                metric = mc.getConsistencyQualityMetrics();
+                FUNTIONAL_OP.setText(Integer.toString(metric.getNumberOfFunctionalOPAxiom()));
+                INVERSE_FUNTIONAL_OP.setText(Integer.toString(metric.getNumberOfInverseFunctionalOPAxioms()));
+                TRANSITIVE_OP.setText(Integer.toString(metric.getNumberOfTransitiveOPAxioms()));
+                SYMMETRIC_OP.setText(Integer.toString(metric.getNumberOfSymmetricOPAxioms()));
+                ASYMMETRIC_OP.setText(Integer.toString(metric.getNumberOfAsymmetricOPAxioms()));
+                REFLEXIVE_OP.setText(Integer.toString(metric.getNumberOfReflexiveOPAxioms()));
+                IREFLEXIVE_OP.setText(Integer.toString(metric.getNumberOfIreflexiveOPAxioms()));
+                FUNCTIONAL_DP.setText(Integer.toString(metric.getNumberOfFunctionalDPAxioms()));
+                
+                metric = mc.checkConsistency();
+                CONSISTENCY_STATUS.setText(Boolean.toString(metric.isConsistencyState()));
                 
                 metric = mc.getDataLevelQualityMetrics();
                 ISOLATEDINDIVIDUAL.setText (Integer.toString(metric.getNumberofIsolatedInstance()));
@@ -1745,20 +1837,8 @@ public class DashBoardQA extends javax.swing.JFrame {
                 DP_USAGE.setText(Double.toString(metric.getDatapropertyUsage()));
                 ISOLATEDDP.setText(Integer.toString(metric.getNumberOfIsolatedDataProperty()));
                 ISOLATED_CLASS.setText(Integer.toString(metric.getNumberOfIsolatedClass()));
-                
-                metric = mc.checkConsistency();
-                CONSISTENCY_STATUS.setText(Boolean.toString(metric.isConsistencyState()));
-//              
-                metric = mc.getConsistencyQualityMetrics();
-                FUNTIONAL_OP.setText(Integer.toString(metric.getNumberOfFunctionalOPAxiom()));
-                INVERSE_FUNTIONAL_OP.setText(Integer.toString(metric.getNumberOfInverseFunctionalOPAxioms()));
-                TRANSITIVE_OP.setText(Integer.toString(metric.getNumberOfTransitiveOPAxioms()));
-                SYMMETRIC_OP.setText(Integer.toString(metric.getNumberOfSymmetricOPAxioms()));
-                ASYMMETRIC_OP.setText(Integer.toString(metric.getNumberOfAsymmetricOPAxioms()));
-                REFLEXIVE_OP.setText(Integer.toString(metric.getNumberOfReflexiveOPAxioms()));
-                IREFLEXIVE_OP.setText(Integer.toString(metric.getNumberOfIreflexiveOPAxioms()));
-                FUNCTIONAL_DP.setText(Integer.toString(metric.getNumberOfFunctionalDPAxioms()));
-
+               
+              
                 //Graph Metrics - Modularity
                 metric = mc.getGraphQualityMetrics();
                 CIRCULARITY.setText(Boolean.toString(metric.isCircles()));
@@ -1773,20 +1853,160 @@ public class DashBoardQA extends javax.swing.JFrame {
                 setComboBoxValues(metric);
                 LOADINGLabel.setVisible(false);
             } else {
-                JOptionPane.showMessageDialog(null, "Incorrect file Type, Choose an OWL file!");
+                JOptionPane.showMessageDialog(null, "Incorrect File Type!, Required OWL file!");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No File has been selected!");
+            JOptionPane.showMessageDialog(null, "No File has been selected! OR Root class is not entered");
         }
     }//GEN-LAST:event_qualityProfilerbtnActionPerformed
-
+    private boolean setRoot () {
+        boolean root = true;
+        if ("".equals(ROOT_CLASS.getText())) {
+            JOptionPane.showMessageDialog(null, "Add root class to the class connection");
+        } 
+        return root;
+    }
     private void jCheckBoxClassMetricsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxClassMetricsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxClassMetricsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+            boolean successFlag = false; 
+          Map<String, Object[]> measureData = new TreeMap<String,Object[]>();
+  // Creating Map to store measure values to excel
+  
+        measureData.put(
+            "1",
+            new Object[] { "Measure ID","Measure ", "Value"});
+        measureData.put(
+            "2",
+            new Object[] { "M1","Class count ", CLASSCOUNT.getText()});
+        measureData.put(
+            "3",
+            new Object[] { "M2","Object property count", OPCOUNT.getText()});
+        measureData.put(
+            "4",
+            new Object[] { "M3","Data Property count ", DPCOUNT.getText()});
+        measureData.put(
+            "5",
+            new Object[] { "M4","Individual count ", INDIVIDUALCOUNT.getText()});
+        measureData.put(
+            "6",
+            new Object[] { "M5","Logical axioms ", LOGICALAXIOMCOUNT.getText()});
+        measureData.put(
+            "7",
+            new Object[] { "M6","Declared axioms ", DeclaredAxiomCount.getText()});
+        measureData.put(
+            "8",
+            new Object[] { "M7","Chain object property count ", CHAINPROPERTY_COUNT.getText()});
+        measureData.put(
+            "9",
+            new Object[] { "M8","Subclass axioms", SUBCLASS_AXIOMS.getText()});
+        measureData.put(
+            "10",
+            new Object[] { "M9","Maximum depth", MAX_DEPTH.getText()});
+        measureData.put(
+            "11",
+            new Object[] { "M10","Maximum breadth", MAX_BREADTH.getText()});
+        measureData.put(
+            "12",
+            new Object[] { "M11","Class connectivity", CLASS_CON.getText()});
+        measureData.put(
+            "13",
+            new Object[] { "M12","Consistency status", CONSISTENCY_STATUS.getText()});
+        measureData.put(
+            "14",
+            new Object[] { "M13","Equivalent class axioms", EQUIVALENT_CLASS_AXIOMS.getText()});
+        measureData.put(
+            "15",
+            new Object[] { "M14","Disjoint class axioms", DISJOINT_CLASS_AXIOMS.getText()});
+        measureData.put(
+            "16",
+            new Object[] { "M15","Sub object property axioms ", SUB_OBJECTPROPERTY_AXIOMS.getText()});
+        measureData.put(
+            "17",
+            new Object[] { "M16","Equivalent object property axioms ", EQUIVALENT_OBJECT_PROPERTY_AXIOMS.getText()});
+        measureData.put(
+            "18",
+            new Object[] { "M17","Disjoint object property axioms", DISJOINT_OBJPROPERTY_AXIOMS.getText()});
+        measureData.put(
+            "19",
+            new Object[] { "M18","Circularity status", CIRCULARITY.getText()});
+        measureData.put(
+            "20",
+            new Object[] { "M19","Functional object property", FUNTIONAL_OP.getText()});
+        measureData.put(
+            "21",
+            new Object[] { "M20","Inverse functional object property", INVERSE_FUNTIONAL_OP.getText()});
+        measureData.put(
+            "22",
+            new Object[] { "M21","Transitive object property", TRANSITIVE_OP.getText()});
+        measureData.put(
+            "23",
+            new Object[] { "M22","Symmetric object property", SYMMETRIC_OP.getText()});
+        measureData.put(
+            "24",
+            new Object[] { "M23","Asymmetric object property", ASYMMETRIC_OP.getText()});
+        measureData.put(
+            "25",
+            new Object[] { "M24","Reflexive object property", REFLEXIVE_OP.getText()});
+        measureData.put(
+            "26",
+            new Object[] { "M25","Irreflexive object property", IREFLEXIVE_OP.getText()});
+        measureData.put(
+            "27",
+            new Object[] { "M26","Functional data property", FUNCTIONAL_DP.getText()});
+        measureData.put(
+            "28",
+            new Object[] { "M27","Relationship richness", RELATION_RICHNESS.getText()});
+        measureData.put(
+            "29",
+            new Object[] { "M28","Class richness", CLASS_RICHNESS.getText()});
+        measureData.put(
+            "30",
+            new Object[] { "M29","Object property usage", OP_USAGE.getText()});
+        measureData.put(
+            "31",
+            new Object[] { "M30","Data Property usage", DP_USAGE.getText()});
+        measureData.put(
+            "32",
+            new Object[] { "M31","Instance usage", INSTANCE_USAGE.getText()});
+        measureData.put(
+            "33",
+            new Object[] { "M32","Isolated Individual", ISOLATEDINDIVIDUAL.getText()});
+        measureData.put(
+            "34",
+            new Object[] { "M33","Isolated object property", ISOLATEDOP.getText()});
+        measureData.put(
+            "35",
+            new Object[] { "M34","Isolated data property", ISOLATEDDP.getText()});
+        measureData.put(
+            "36",
+            new Object[] { "M35","Isolated Class", ISOLATED_CLASS.getText()});
+        measureData.put(
+            "37",
+            new Object[] { "M36","Annotation property count", ANNOTATIONPROPCOUNT.getText()});
+        measureData.put(
+            "38",
+            new Object[] { "M37","nnotation property assertion count", ANNOTATIONPROP_ASSERT.getText()});
+        // call to excel generator
+        ExcelReportGenerator excelReportGenerator = new ExcelReportGenerator(measureData);
+        try {
+            successFlag = excelReportGenerator.generateExcelReport();
+        } catch (IOException ex) {
+            Logger.getLogger(DashBoardQA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (successFlag) {
+            JOptionPane.showMessageDialog(null, "Downloaded the report: document/projectFolder/OQM_Summary.xlsx ");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ROOT_CLASSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ROOT_CLASSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ROOT_CLASSActionPerformed
 
     private void setComboBoxValues(Metric metric) {
 //        ONTO_CLASSLIST.removeAllItems();

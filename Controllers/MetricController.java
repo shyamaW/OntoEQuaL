@@ -75,14 +75,14 @@ public class MetricController {
     }
     
     public Metric checkConsistency() {
-        //        if (selectedconsistencyStatus) {
-//            checkConsistency();
-// this fuction should be tested with adding inconsistency ontology
-//the metrics depend on the reasoner should be Tested
-//        }
-       // ConsistencyChecker consistencyChecker = new ConsistencyChecker(o, reasoner);
-        //consistencyChecker.isOntologyConsistent()- should be called
-        m.setConsistencyState(true);
+                    //        if (selectedconsistencyStatus) {
+            //            checkConsistency();
+            // this fuction should be tested with adding inconsistency ontology
+            //the metrics depend on the reasoner should be Tested
+            //        }
+        ConsistencyChecker consistencyChecker = new ConsistencyChecker(o, reasoner);
+       // consistencyChecker.isOntologyConsistent();//- should be called
+        m.setConsistencyState(consistencyChecker.isOntologyConsistent());
         return m;
     }
     
@@ -143,8 +143,8 @@ public class MetricController {
         metricResult = graphCheck.isCircle();
         m.setCircles(metricResult.isCircularity());
         m.setMaxDepth(metricResult.getMaxDepth());
-      //  GraphModularityBFS bfs = new GraphModularityBFS(o, reasoner, df);
-      //  m.setMaxBreadth(bfs.graphBreadth().getMaxBreadth()); // check the bug
+        GraphModularityBFS bfs = new GraphModularityBFS(o, reasoner, df);
+        m.setMaxBreadth(bfs.graphBreadth().getMaxBreadth()); // check the bug
     }
     
     private void getAnnotationMetrics() {

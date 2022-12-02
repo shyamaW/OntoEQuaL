@@ -1793,7 +1793,11 @@
                     <Component class="javax.swing.JTextField" name="ROOT_CLASS">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Crop"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ROOT_CLASSActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="CLASS_CON">
                       <Properties>
